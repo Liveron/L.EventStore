@@ -56,7 +56,7 @@ jobs:
         docker ps
       
     - name: Test
-      run: dotnet test
+      run: dotnet test --configuration Release --no-build
 
 #   pack-and-publish:
 #     needs: build-and-test
