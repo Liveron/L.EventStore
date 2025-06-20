@@ -1,37 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Repositories\\Mock\\L.EventStore\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{B7161829-5471-4B29-BFDF-54CF76BE8EAB}|tests\\L.EventStore.EntityFramework.FunctionalTests\\L.EventStore.EntityFramework.FunctionalTests.csproj|d:\\repositories\\mock\\l.eventstore\\tests\\l.eventstore.entityframework.functionaltests\\eventstorerepositoryfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7161829-5471-4B29-BFDF-54CF76BE8EAB}|tests\\L.EventStore.EntityFramework.FunctionalTests\\L.EventStore.EntityFramework.FunctionalTests.csproj|solutionrelative:tests\\l.eventstore.entityframework.functionaltests\\eventstorerepositoryfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EventStoreRepositoryFixture.cs",
-              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.FunctionalTests\\EventStoreRepositoryFixture.cs",
-              "RelativeDocumentMoniker": "tests\\L.EventStore.EntityFramework.FunctionalTests\\EventStoreRepositoryFixture.cs",
-              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.FunctionalTests\\EventStoreRepositoryFixture.cs",
-              "RelativeToolTip": "tests\\L.EventStore.EntityFramework.FunctionalTests\\EventStoreRepositoryFixture.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwB4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T09:37:32.561Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

@@ -1,4 +1,5 @@
-﻿using L.EventStore.Abstractions;
+﻿using dotenv.net;
+using L.EventStore.Abstractions;
 using L.EventStore.EntityFramework.PostgreSQL.DataModel;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,8 +10,8 @@ public sealed class PostgreEventStoreCollection : ICollectionFixture<PostgreEven
 
 public sealed class PostgreEventStoreFixture : IDisposable
 {
-    private readonly string _connectionString =
-        "Host=localhost;Port=5432;Database=EventStoreTest;Username=postgres;Password=postgres";
+    private const string _environmentEVN = "DOTNET_ENVIRONMENT";
+    private const string _connectionStringEVN = "POSTGRESQL_DB";
 
     public TestDbContext DbContext { get; }
     public IEventStoreRepository<Guid> Repository { get; }
@@ -18,8 +19,17 @@ public sealed class PostgreEventStoreFixture : IDisposable
 
     public PostgreEventStoreFixture()
     {
+        var environment = Environment.GetEnvironmentVariable(_environmentEVN)
+            ?? throw new InvalidOperationException($"Environment variable {_environmentEVN} isn't set");
+
+        if (environment == "Development")
+            DotEnv.Load();
+
+        var connectionString = Environment.GetEnvironmentVariable(_connectionStringEVN)
+            ?? throw new InvalidOperationException($"Environment variable {_connectionStringEVN} isn't set");
+
         var options = new DbContextOptionsBuilder<TestDbContext>()
-            .UseNpgsql(_connectionString)
+            .UseNpgsql(connectionString)
             .Options;
 
         DbContext = new TestDbContext(options);
