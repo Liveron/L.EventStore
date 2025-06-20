@@ -55,8 +55,8 @@ jobs:
         sleep 10  # Wait for the database to be ready
         docker ps
       
-#     - name: Test
-#       run: dotnet test --no-build 
+    - name: Test
+      run: dotnet test --no-build 
 
 #   pack-and-publish:
 #     needs: build-and-test
