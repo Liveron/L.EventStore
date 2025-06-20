@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Repositories\\Mock\\L.EventStore\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|d:\\repositories\\mock\\l.eventstore\\tests\\l.eventstore.entityframework.postgresql.functionaltests\\postgreeventstorefixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|solutionrelative:tests\\l.eventstore.entityframework.postgresql.functionaltests\\postgreeventstorefixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|d:\\repositories\\mock\\l.eventstore\\tests\\l.eventstore.entityframework.postgresql.functionaltests\\eventstoretests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|solutionrelative:tests\\l.eventstore.entityframework.postgresql.functionaltests\\eventstoretests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PostgreEventStoreFixture.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\PostgreEventStoreFixture.cs",
+              "RelativeDocumentMoniker": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\PostgreEventStoreFixture.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\PostgreEventStoreFixture.cs",
+              "RelativeToolTip": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\PostgreEventStoreFixture.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwB4AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T14:37:11.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EventStoreTests.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\EventStoreTests.cs",
+              "RelativeDocumentMoniker": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\EventStoreTests.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\EventStoreTests.cs",
+              "RelativeToolTip": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\EventStoreTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T14:36:29.352Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

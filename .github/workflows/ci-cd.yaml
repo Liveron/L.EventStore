@@ -60,27 +60,27 @@ jobs:
     - name: Test
       run: dotnet test --configuration Release --no-build
 
-#   pack-and-publish:
-#     needs: build-and-test
-#     runs-on: ubuntu-latest
+  pack-and-publish:
+    needs: build-and-test
+    runs-on: ubuntu-latest
 
-#     steps:
-#     - uses: actions/checkout@v4
+    steps:
+    - uses: actions/checkout@v4
 
-#     - name: Setup .NET
-#       uses: actions/setup-dotnet@v4
-#       with:
-#         dotnet-version: ${{ env.DOTNET_VERSION }}
-#         source-url: https://nuget.pkg.github.com/Liveron/index.json
-#       env:
-#         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_PACKAGES_ACCESS_TOKEN }}
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        source-url: https://nuget.pkg.github.com/Liveron/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_PACKAGES_ACCESS_TOKEN }}
 
-#     - name: Pack
-#       run: dotnet pack --configuration Release -o ./artifacts
+    - name: Pack
+      run: dotnet pack --configuration Release -o ./artifacts
 
-#     - name: Publish to GitHub Packages
-#       working-directory: artifacts
-#       run: | 
-#         dotnet nuget push * --source "https://nuget.pkg.github.com/Liveron/index.json" \
-#         --api-key ${{ secrets.NUGET_PACKAGES_ACCESS_TOKEN }} \
-#         --skip-duplicate
+    - name: Publish to GitHub Packages
+      working-directory: artifacts
+      run: | 
+        dotnet nuget push * --source "https://nuget.pkg.github.com/Liveron/index.json" \
+        --api-key ${{ secrets.NUGET_PACKAGES_ACCESS_TOKEN }} \
+        --skip-duplicate
