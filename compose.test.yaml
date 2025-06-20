@@ -1,0 +1,14 @@
+services:
+  postgresql:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports: 
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - postgresql-logs:/var/log/postgresql
+
+volumes:
+  postgresql-data:
+  postgresql-logs:

@@ -9,13 +9,19 @@ on:
 
 env:
   DOTNET_VERSION: '8.x'
+  DOTNET_ENVIRONMENT: 'Test'
+  POSTGRES_PORT: 5432
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
+
+    - name: Set up environment variables
+      run: |
+        echo "POSTGRESQL_DB=Host=localhost;Port=${{ env.POSTGRES_PORT }};Database=event_store_test_db;Username=postgres;Passwork=${{ env.POSTGRES_PASSWORD }}" >> $GITHUB_ENV
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -43,6 +49,12 @@ jobs:
         sudo chmod +x /usr/local/bin/docker-compose
         docker-compose --version
 
+    - name: Docker Compose Up
+      run: |
+        docker-compose -f compose.test.yaml up -d
+        sleep 10  # Wait for the database to be ready
+        docker ps
+      
 #     - name: Test
 #       run: dotnet test --no-build 
 
