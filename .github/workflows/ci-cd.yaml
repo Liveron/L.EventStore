@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 
 env:
+  POSTGRESQL_IMAGE: 'postgres:17.5-alpine3.22'
   DOTNET_VERSION: '8.x'
   DOTNET_ENVIRONMENT: 'Test'
   POSTGRES_PORT: 5432
