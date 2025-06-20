@@ -21,7 +21,7 @@ jobs:
 
     - name: Set up environment variables
       run: |
-        echo "POSTGRESQL_DB=Host=localhost;Port=${{ env.POSTGRES_PORT }};Database=event_store_test_db;Username=postgres;Passwork=${{ env.POSTGRES_PASSWORD }}" >> $GITHUB_ENV
+        echo "POSTGRESQL_DB=Host=localhost;Port=${{ env.POSTGRES_PORT }};Database=event_store_test_db;Username=postgres;Password=${{ env.POSTGRES_PASSWORD }}" >> $GITHUB_ENV
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
