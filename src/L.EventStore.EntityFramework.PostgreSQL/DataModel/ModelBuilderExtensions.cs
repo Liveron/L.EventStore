@@ -15,7 +15,7 @@ public static class ModelBuilderExtensions
         {
             entity.ToTable(tableName);
 
-            entity.HasKey(e => new { e.StreamId, e.StreamType, e.Version });
+            entity.HasKey(e => new { e.StreamId, e.Version });
 
             entity.Property(e => e.Event)
                 .HasColumnType("jsonb");
