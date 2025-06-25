@@ -4,66 +4,85 @@ using System.Text.Json;
 
 namespace L.EventStore;
 
-public sealed class EventStore<TStreamIdentifier>(
+public sealed class EventStore<TStreamIdentifier, TEvent>(
     IEventStoreRepository<TStreamIdentifier> repository)
-    : IEventStore<TStreamIdentifier>
+    : IEventStore<TStreamIdentifier, TEvent>
     where TStreamIdentifier : IEquatable<TStreamIdentifier>, IComparable<TStreamIdentifier> 
+    where TEvent : notnull
 {
     private readonly IEventStoreRepository<TStreamIdentifier> _repository = repository 
         ?? throw new ArgumentNullException(nameof(repository));
 
-    public async Task<List<IEvent>> GetEventStreamAsync(TStreamIdentifier id, string streamType)
+    public async Task<List<TEvent>> GetEventStreamAsync(TStreamIdentifier id, string streamType)
     {
-        ArgumentNullException.ThrowIfNull(nameof(id));
-        ArgumentException.ThrowIfNullOrWhiteSpace(nameof(streamType));
+        ArgumentNullException.ThrowIfNull(id);
+        ArgumentException.ThrowIfNullOrWhiteSpace(streamType);
 
         var eventEntries = await _repository.GetEventsAsync(id, streamType);
         return eventEntries.Count == 0 ? [] : DeserializeEvents(eventEntries);
     }
 
-    public async Task<List<IEvent>> GetEventStreamAsync(TStreamIdentifier id)
+    public async Task<List<TEvent>> GetEventStreamAsync(TStreamIdentifier id)
     {
-        ArgumentNullException.ThrowIfNull(nameof(id));
+        ArgumentNullException.ThrowIfNull(id);
 
         var eventEntries = await _repository.GetEventsAsync(id);
         return eventEntries.Count == 0 ? [] : DeserializeEvents(eventEntries);
     }
 
-    private static List<IEvent> DeserializeEvents(List<EventStoreEntry<TStreamIdentifier>> eventEntries)
+    private static List<TEvent> DeserializeEvents(List<EventStoreEntry<TStreamIdentifier>> eventEntries)
     {
         return [.. eventEntries.Select(DeserializeEvent)];
     }
 
-    private static IEvent DeserializeEvent(EventStoreEntry<TStreamIdentifier> entry)
+    private static TEvent DeserializeEvent(EventStoreEntry<TStreamIdentifier> entry)
     {
         var eventType = Type.GetType(entry.EventType)
             ?? throw new InvalidOperationException($"Event type '{entry.EventType}' not found.");
 
-        return (IEvent)JsonSerializer.Deserialize(entry.Event, eventType)!;
+        return (TEvent)JsonSerializer.Deserialize(entry.Event, eventType)!;
     }
 
-    public async Task SaveEventsAsync(IEnumerable<IEvent> events, TStreamIdentifier id, string streamType)
+    public async Task SaveEventsAsync(IEnumerable<TEvent> events, TStreamIdentifier streamIdentifier,
+        string streamType, long expectedVersion = 0)
     {
-        var eventEntries = CreateEventEntries(events, id, streamType);
-        if (eventEntries.Count > 0)
-        {
-            await _repository.AddManyAsync(eventEntries);
-            await _repository.SaveChangesAsync();
-        }
+        ArgumentNullException.ThrowIfNull(events);
+        ArgumentNullException.ThrowIfNull(streamIdentifier);
+        ArgumentException.ThrowIfNullOrWhiteSpace(streamType);
+
+        if (expectedVersion < 0)
+            throw new InvalidOperationException("Expected version cannot be negative.");
+
+        if (!events.Any())
+            return;
+
+        var currentVersion = await _repository.GetStreamVersion(streamIdentifier);
+
+        if (currentVersion != expectedVersion)
+            throw new ConcurrencyException();
+
+        var eventEntries = CreateEventEntries(events, streamIdentifier, streamType, expectedVersion);
+        await _repository.AddManyAsync(eventEntries);
+        await _repository.SaveChangesAsync();
     }
 
     private static List<EventStoreEntry<TStreamIdentifier>> CreateEventEntries(
-        IEnumerable<IEvent> events, TStreamIdentifier streamIdentifier, string streamType)
+        IEnumerable<TEvent> events, TStreamIdentifier streamIdentifier, string streamType, long expectedVersion)
     {
-        ArgumentNullException.ThrowIfNull(events, nameof(events));
-        ArgumentNullException.ThrowIfNull(streamIdentifier, nameof(streamIdentifier));
-        ArgumentException.ThrowIfNullOrWhiteSpace(streamType, nameof(streamType));
+        var eventEntries = new List<EventStoreEntry<TStreamIdentifier>>();
 
-        return events.Any() ? [.. events.Select(e => CreateEventEntry(e, streamIdentifier, streamType))] : [];
+        var version = expectedVersion;
+        foreach (var @event in events)
+        {
+            version++;
+            eventEntries.Add(CreateEventEntry(@event, streamIdentifier, streamType, version));
+        }
+
+        return eventEntries;
     }
 
     private static EventStoreEntry<TStreamIdentifier> CreateEventEntry(
-        IEvent @event, TStreamIdentifier streamIdentifier, string streamType)
+        TEvent @event, TStreamIdentifier streamIdentifier, string streamType, long version)
     {
         return new EventStoreEntry<TStreamIdentifier>
         {
@@ -71,7 +90,7 @@ public sealed class EventStore<TStreamIdentifier>(
             StreamType = streamType,
             EventType = @event.GetType().AssemblyQualifiedName!,
             Event = JsonSerializer.Serialize(@event, @event.GetType()),
-            Version = @event.Version
+            Version = version,
         };
     }
 

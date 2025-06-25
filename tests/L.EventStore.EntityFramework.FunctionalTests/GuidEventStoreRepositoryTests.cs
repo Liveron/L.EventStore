@@ -1,11 +1,14 @@
 ﻿using L.EventStore.Abstractions;
+using L.EventStore.Exceptions;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
 namespace L.EventStore.EntityFramework.FunctionalTests;
 
-public sealed class EventStoreRepositoryTests(EventStoreRepositoryFixture fixture) 
-    : IClassFixture<EventStoreRepositoryFixture>
+public sealed class GuidEventStoreRepositoryTests(GuidEventStoreRepositoryFixture fixture) 
+    : IClassFixture<GuidEventStoreRepositoryFixture>
 {
+    private readonly DbContext _context = fixture.Context;
     private readonly IEventStoreRepository<Guid> _repository = fixture.Repository;
 
     [Fact]
@@ -30,6 +33,30 @@ public sealed class EventStoreRepositoryTests(EventStoreRepositoryFixture fixtur
     }
 
     [Fact]
+    public async Task AddAsync_ShouldThrowConcurrencyException_WhenStreamIdAndVersionRepeated()
+    {
+        // Arrange
+        var streamId = Guid.NewGuid();
+        var streamType = "TestStream";
+        var eventEntries = new[]
+        {
+            CreateEventEntry(streamId, streamType, "Data1", 1),
+            CreateEventEntry(streamId, streamType, "Data2", 2),
+        };
+        var duplicateEntry = CreateEventEntry(streamId, streamType, "Data3", 2);
+
+        // Act
+        await _repository.AddManyAsync(eventEntries);
+        await _repository.SaveChangesAsync();
+        _context.ChangeTracker.Clear(); // Clear the context to avoid tracking issues
+        await _repository.AddAsync(duplicateEntry);
+
+        // Assert
+        await Assert.ThrowsAnyAsync<ConcurrencyException>(async () =>
+            await _repository.SaveChangesAsync());
+    }
+
+    [Fact]
     public async Task Add_ShouldAddEventToStore()
     {
         // Arrange
@@ -51,7 +78,31 @@ public sealed class EventStoreRepositoryTests(EventStoreRepositoryFixture fixtur
     }
 
     [Fact]
-    public async Task AddManyAsync_ShouldAddMultipleEvents()
+    public async Task Add_ShouldThrowConcurrencyException_WhenStreamIdAndVersionRepeated()
+    {
+        // Arrange
+        var streamId = Guid.NewGuid();
+        var streamType = "TestStream";
+        var eventEntries = new[]
+        {
+            CreateEventEntry(streamId, streamType, "Data1", 1),
+            CreateEventEntry(streamId, streamType, "Data2", 2),
+        };
+        var duplicateEntry = CreateEventEntry(streamId, streamType, "Data3", 2);
+
+        // Act
+        await _repository.AddManyAsync(eventEntries);
+        await _repository.SaveChangesAsync();
+        _context.ChangeTracker.Clear(); // Clear the context to avoid tracking issues
+        _repository.Add(duplicateEntry);
+
+        // Assert
+        await Assert.ThrowsAnyAsync<ConcurrencyException>(async () =>
+            await _repository.SaveChangesAsync());
+    }
+
+    [Fact]
+    public async Task AddManyAsync_ShouldAddMultipleEntries()
     {
         // Arrange
         var streamId = Guid.NewGuid();
@@ -70,6 +121,68 @@ public sealed class EventStoreRepositoryTests(EventStoreRepositoryFixture fixtur
         // Assert
         Assert.Equal(3, savedEvents.Count);
         Assert.All(savedEvents, e => Assert.Equal(streamId, e.StreamId));
+    }
+
+    [Fact]
+    public async Task AddManyAsync_ShouldThrowConcurrencyException_WhenStreamIdAndVersionRepeated()
+    {
+        // Arrange
+        var streamId = Guid.NewGuid();
+        var streamType = "TestStream";
+        var eventEntries = new[]
+        {
+            CreateEventEntry(streamId, streamType, "Data1", 1),
+            CreateEventEntry(streamId, streamType, "Data2", 2),
+        };
+        var entriesWithRepeated = new[]
+        {
+            CreateEventEntry(streamId, streamType, "Data3", 1),
+            CreateEventEntry(streamId, streamType, "Data4", 2)
+        };
+
+        // Act
+        await _repository.AddManyAsync(eventEntries);
+        await _repository.SaveChangesAsync();
+        _context.ChangeTracker.Clear();
+        await _repository.AddManyAsync(entriesWithRepeated);
+
+        // Assert
+        await Assert.ThrowsAnyAsync<ConcurrencyException>(async () =>
+            await _repository.SaveChangesAsync());
+    }
+
+    [Fact]
+    public async Task GetStreamVersion_ShouldReturnCorrectVersion()
+    {
+        // Arrange
+        var streamId = Guid.NewGuid();
+        var events = new[]
+        {
+            CreateEventEntry(streamId, "TestStream", "Data1", 1),
+            CreateEventEntry(streamId, "TestStream", "Data2", 2),
+            CreateEventEntry(streamId, "TestStream", "Data3", 3)
+        };
+        await _repository.AddManyAsync(events);
+        await _repository.SaveChangesAsync();
+
+        // Act
+        var version = await _repository.GetStreamVersion(streamId);
+
+        // Assert
+        Assert.Equal(3, version);
+    }
+
+    [Fact]
+    public async Task GetStreamVersion_WithNonExistentStream_ShouldReturnZero()
+    {
+        // Arrange
+        var nonExistentId = Guid.NewGuid();
+
+        // Act
+        var version = await _repository.GetStreamVersion(nonExistentId);
+
+        // Assert
+        Assert.Equal(0, version);
     }
 
     [Fact]

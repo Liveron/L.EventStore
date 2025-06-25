@@ -5,19 +5,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace L.EventStore.EntityFramework.PostgreSQL.FunctionalTests;
 
-[CollectionDefinition("PostgreSQL EventStore Collection")]
-public sealed class PostgreEventStoreCollection : ICollectionFixture<PostgreEventStoreFixture>;
+[CollectionDefinition("Guid EventStore Collection")]
+public sealed class GuidEventStoreCollection : ICollectionFixture<GuidEventStoreFixture>;
 
-public sealed class PostgreEventStoreFixture : IDisposable
+public sealed class GuidEventStoreFixture : IDisposable
 {
     private const string _environmentEVN = "DOTNET_ENVIRONMENT";
     private const string _connectionStringEVN = "POSTGRESQL_DB";
 
     public TestDbContext DbContext { get; }
     public IEventStoreRepository<Guid> Repository { get; }
-    public IEventStore<Guid> EventStore { get; }
+    public IEventStore<Guid, IEvent> EventStore { get; }
 
-    public PostgreEventStoreFixture()
+    public GuidEventStoreFixture()
     {
         var environment = Environment.GetEnvironmentVariable(_environmentEVN)
             ?? throw new InvalidOperationException($"Environment variable {_environmentEVN} isn't set");
@@ -35,8 +35,8 @@ public sealed class PostgreEventStoreFixture : IDisposable
         DbContext = new TestDbContext(options);
         DbContext.Database.EnsureCreated();
 
-        Repository = new EventStoreRepository<TestDbContext, Guid>(DbContext);
-        EventStore = new EventStore<Guid>(Repository);
+        Repository = new EventStoreRepository<Guid, TestDbContext>(DbContext);
+        EventStore = new EventStore<Guid, IEvent>(Repository);
     }
 
     public void Dispose()
@@ -45,6 +45,8 @@ public sealed class PostgreEventStoreFixture : IDisposable
         EventStore.Dispose();
     }
 }
+
+public interface IEvent;
 
 public sealed class TestDbContext(DbContextOptions<TestDbContext> options)
     : DbContext(options)

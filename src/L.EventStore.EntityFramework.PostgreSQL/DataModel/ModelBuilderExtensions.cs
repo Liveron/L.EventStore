@@ -5,11 +5,11 @@ namespace L.EventStore.EntityFramework.PostgreSQL.DataModel;
 
 public static class ModelBuilderExtensions
 {
-    public static void AddEventStore<TEventStreamId>(this ModelBuilder modelBuilder,
-        string tableName = "event_store")
+    public static void AddEventStore<TEventStreamId>(this ModelBuilder modelBuilder, string tableName = "event_store")
         where TEventStreamId : IEquatable<TEventStreamId>, IComparable<TEventStreamId>
     {
-        ArgumentNullException.ThrowIfNull(modelBuilder, nameof(modelBuilder));
+        ArgumentNullException.ThrowIfNull(modelBuilder);
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
 
         modelBuilder.Entity<EventStoreEntry<TEventStreamId>>(entity =>
         {

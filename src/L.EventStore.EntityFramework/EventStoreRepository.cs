@@ -4,51 +4,54 @@ using Microsoft.EntityFrameworkCore;
 
 namespace L.EventStore.EntityFramework;
 
-public sealed class EventStoreRepository<TContext, TEventStreamId>(TContext context) 
-    : IEventStoreRepository<TEventStreamId>
-    where TEventStreamId : IEquatable<TEventStreamId>, 
-    IComparable<TEventStreamId>
-    where TContext : DbContext
+public sealed class EventStoreRepository<TStreamIdentifier, TContext>(TContext context) 
+    : IEventStoreRepository<TStreamIdentifier> where TContext : DbContext
+    where TStreamIdentifier : IComparable<TStreamIdentifier>, IEquatable<TStreamIdentifier>
 {
     private readonly TContext _context = context ?? throw new ArgumentNullException(nameof(context));
 
-    public void Add(EventStoreEntry<TEventStreamId> @event)
+    public void Add(EventStoreEntry<TStreamIdentifier> @event)
     {
-
-         _context.Set<EventStoreEntry<TEventStreamId>>()
-             .Add(@event);
+        _context.Set<EventStoreEntry<TStreamIdentifier>>()
+            .Add(@event);
     }
 
-    public async Task AddAsync(EventStoreEntry<TEventStreamId> @event)
+    public async Task AddAsync(EventStoreEntry<TStreamIdentifier> @event)
     {
-         await _context.Set<EventStoreEntry<TEventStreamId>>()
-             .AddAsync(@event);
+        await _context.Set<EventStoreEntry<TStreamIdentifier>>()
+            .AddAsync(@event);
     }
 
-    public async Task AddManyAsync(IEnumerable<EventStoreEntry<TEventStreamId>> events)
-    {      
-        await _context.Set<EventStoreEntry<TEventStreamId>>()
+    public async Task AddManyAsync(IEnumerable<EventStoreEntry<TStreamIdentifier>> events)
+    {
+        await _context.Set<EventStoreEntry<TStreamIdentifier>>()
             .AddRangeAsync(events);
     }
 
-    public async Task<List<EventStoreEntry<TEventStreamId>>> GetEventsAsync(
-        TEventStreamId streamId, string streamType)
+    public async Task<List<EventStoreEntry<TStreamIdentifier>>> GetEventsAsync(TStreamIdentifier streamId)
     {
-        return await _context.Set<EventStoreEntry<TEventStreamId>>()
-            .AsNoTracking()
-            .Where(e => e.StreamId.Equals(streamId) && e.StreamType.Equals(streamType))
-            .OrderBy(e => e.Version)
-            .ToListAsync();
-    }
-
-    public async Task<List<EventStoreEntry<TEventStreamId>>> GetEventsAsync(
-        TEventStreamId streamId)
-    {
-        return await _context.Set<EventStoreEntry<TEventStreamId>>()
+        return await _context.Set<EventStoreEntry<TStreamIdentifier>>()
             .AsNoTracking()
             .Where(e => e.StreamId.Equals(streamId))
             .OrderBy(e => e.Version)
             .ToListAsync();
+    }
+
+    public async Task<List<EventStoreEntry<TStreamIdentifier>>> GetEventsAsync(TStreamIdentifier streamId, string streamType)
+    {
+        return await _context.Set<EventStoreEntry<TStreamIdentifier>>()
+            .AsNoTracking()
+            .Where(e => e.StreamId.Equals(streamId) && e.StreamType == streamType)
+            .OrderBy(e => e.Version)
+            .ToListAsync();
+    }
+
+    public async Task<long> GetStreamVersion(TStreamIdentifier streamId)
+    {
+        return await _context.Set<EventStoreEntry<TStreamIdentifier>>()
+            .AsNoTracking()
+            .Where(e => e.StreamId.Equals(streamId))
+            .MaxAsync(e => (long?)e.Version) ?? 0;
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellation = default)
@@ -61,7 +64,7 @@ public sealed class EventStoreRepository<TContext, TEventStreamId>(TContext cont
         {
             _context.ChangeTracker.Clear();
             throw new ConcurrencyException();
-        }
+        }      
     }
 
     public void Dispose()

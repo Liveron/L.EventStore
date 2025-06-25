@@ -3,25 +3,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace L.EventStore.EntityFramework.FunctionalTests;
 
-public sealed class EventStoreRepositoryFixture : IDisposable
+public sealed class GuidEventStoreRepositoryFixture : IDisposable
 {
-    private readonly TestDbContext _context;
+    public TestDbContext Context { get; private set; }
     public IEventStoreRepository<Guid> Repository { get; private set; }
 
-    public EventStoreRepositoryFixture()
+    public GuidEventStoreRepositoryFixture()
     {
         var options = new DbContextOptionsBuilder<TestDbContext>()
             .UseInMemoryDatabase("EventStoreTestDb")
             .Options;
 
-        _context = new TestDbContext(options);
-        Repository = new EventStoreRepository<TestDbContext, Guid>(_context);
-        _context.Database.EnsureCreated();
+        Context = new TestDbContext(options);
+        Repository = new EventStoreRepository<Guid, TestDbContext>(Context);
+        Context.Database.EnsureCreated();
     }
 
     public void Dispose()
     {
-        _context.Database.EnsureDeleted();
+        Context.Database.EnsureDeleted();
         Repository.Dispose();
     }
 }
@@ -33,7 +33,7 @@ public sealed class TestDbContext(DbContextOptions<TestDbContext> options)
     {
         modelBuilder.Entity<EventStoreEntry<Guid>>(builder =>
         {
-            builder.HasKey(e => new { e.StreamId, e.StreamType, e.Version });
+            builder.HasKey(e => new { e.StreamId, e.Version });
         });
     }
 }
