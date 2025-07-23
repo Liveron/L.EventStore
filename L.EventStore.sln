@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L.EventStore.Projector.Abst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L.EventStore.Projector.EntityFramework.PostgreSQL", "src\L.EventStore.Projector.EntityFramework.PostgreSQL\L.EventStore.Projector.EntityFramework.PostgreSQL.csproj", "{560CE6DE-7404-41FB-94C1-D381C0A31E09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L.EventStore.UnitTests", "tests\L.EventStore.UnitTests\L.EventStore.UnitTests.csproj", "{D4ABF2DB-2A8A-4F24-8174-E091EA1E3027}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,10 +61,6 @@ Global
 		{560CE6DE-7404-41FB-94C1-D381C0A31E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{560CE6DE-7404-41FB-94C1-D381C0A31E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{560CE6DE-7404-41FB-94C1-D381C0A31E09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4ABF2DB-2A8A-4F24-8174-E091EA1E3027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4ABF2DB-2A8A-4F24-8174-E091EA1E3027}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4ABF2DB-2A8A-4F24-8174-E091EA1E3027}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4ABF2DB-2A8A-4F24-8174-E091EA1E3027}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,7 +74,6 @@ Global
 		{21A3A03C-3595-45A4-8586-0B15534FA7DA} = {8826FFCB-594B-413F-BDEB-E96A7529F64E}
 		{AA857985-AFA8-4C05-A004-725BAE59A97C} = {8826FFCB-594B-413F-BDEB-E96A7529F64E}
 		{560CE6DE-7404-41FB-94C1-D381C0A31E09} = {8826FFCB-594B-413F-BDEB-E96A7529F64E}
-		{D4ABF2DB-2A8A-4F24-8174-E091EA1E3027} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {198CF0DA-C89D-4EC1-B80F-F572ACCC0496}
