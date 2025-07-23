@@ -8,7 +8,7 @@ namespace L.EventStore.EntityFramework.PostgreSQL.FunctionalTests;
 [Collection("Guid EventStore Collection")]
 public sealed class GuidEventStoreRepositoryTests(GuidEventStoreFixture fixture)
 {
-    private readonly IEventStoreRepository<Guid> _repository = fixture.Repository;
+    private readonly IEventStoreRepository<Guid> _repository = fixture.EventStoreRepository;
     private readonly DbContext _context = fixture.DbContext;
 
     [Fact]
@@ -250,10 +250,10 @@ public sealed class GuidEventStoreRepositoryTests(GuidEventStoreFixture fixture)
         Assert.Empty(events);
     }
 
-    private static EventStoreEntry<Guid> CreateEventEntry(
+    private static EventEntry<Guid> CreateEventEntry(
         Guid streamId, string streamType, string data, long version = 1)
     {
-        return new EventStoreEntry<Guid>
+        return new EventEntry<Guid>
         {
             StreamId = streamId,
             StreamType = streamType,
@@ -263,10 +263,10 @@ public sealed class GuidEventStoreRepositoryTests(GuidEventStoreFixture fixture)
         };
     }
 
-    private static EventStoreEntry<Guid> CreateEventEntry(
+    private static EventEntry<Guid> CreateEventEntry(
         Guid streamId, string streamType, TestEvent @event, long version = 1)
     {
-        return new EventStoreEntry<Guid>
+        return new EventEntry<Guid>
         {
             StreamId = streamId,
             StreamType = streamType,

@@ -5,17 +5,111 @@
     {
       "AbsoluteMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|d:\\repositories\\mock\\l.eventstore\\tests\\l.eventstore.entityframework.postgresql.functionaltests\\guideventstorerepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|solutionrelative:tests\\l.eventstore.entityframework.postgresql.functionaltests\\guideventstorerepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD17A62-2934-4DE4-B682-7B6F017177FE}|src\\L.EventStore\\L.EventStore.csproj|d:\\repositories\\mock\\l.eventstore\\src\\l.eventstore\\eventtyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD17A62-2934-4DE4-B682-7B6F017177FE}|src\\L.EventStore\\L.EventStore.csproj|solutionrelative:src\\l.eventstore\\eventtyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA5B2164-1EEC-4E94-B19A-11537C7A3512}|src\\L.EventStore.Abstractions\\L.EventStore.Abstractions.csproj|d:\\repositories\\mock\\l.eventstore\\src\\l.eventstore.abstractions\\ieventstorerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA5B2164-1EEC-4E94-B19A-11537C7A3512}|src\\L.EventStore.Abstractions\\L.EventStore.Abstractions.csproj|solutionrelative:src\\l.eventstore.abstractions\\ieventstorerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|d:\\repositories\\mock\\l.eventstore\\tests\\l.eventstore.entityframework.postgresql.functionaltests\\guideventstoretests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|solutionrelative:tests\\l.eventstore.entityframework.postgresql.functionaltests\\guideventstoretests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|d:\\repositories\\mock\\l.eventstore\\tests\\l.eventstore.entityframework.postgresql.functionaltests\\guideventstorefixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|solutionrelative:tests\\l.eventstore.entityframework.postgresql.functionaltests\\guideventstorefixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|d:\\repositories\\mock\\l.eventstore\\tests\\l.eventstore.entityframework.postgresql.functionaltests\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EA1552E1-4EAD-4D15-8D8F-CF948B4A39B0}|tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests.csproj|solutionrelative:tests\\l.eventstore.entityframework.postgresql.functionaltests\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E99D338-11EB-4997-80B3-537B7945682C}|src\\L.EventStore.EntityFramework.PostgreSQL\\L.EventStore.EntityFramework.PostgreSQL.csproj|d:\\repositories\\mock\\l.eventstore\\src\\l.eventstore.entityframework.postgresql\\datamodel\\modelbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E99D338-11EB-4997-80B3-537B7945682C}|src\\L.EventStore.EntityFramework.PostgreSQL\\L.EventStore.EntityFramework.PostgreSQL.csproj|solutionrelative:src\\l.eventstore.entityframework.postgresql\\datamodel\\modelbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD17A62-2934-4DE4-B682-7B6F017177FE}|src\\L.EventStore\\L.EventStore.csproj|d:\\repositories\\mock\\l.eventstore\\src\\l.eventstore\\eventstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD17A62-2934-4DE4-B682-7B6F017177FE}|src\\L.EventStore\\L.EventStore.csproj|solutionrelative:src\\l.eventstore\\eventstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22F8D4BB-78CD-4B29-AC1D-C52CE6E2E998}|src\\L.EventStore.EntityFramework\\L.EventStore.EntityFramework.csproj|d:\\repositories\\mock\\l.eventstore\\src\\l.eventstore.entityframework\\eventstorerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22F8D4BB-78CD-4B29-AC1D-C52CE6E2E998}|src\\L.EventStore.EntityFramework\\L.EventStore.EntityFramework.csproj|solutionrelative:src\\l.eventstore.entityframework\\eventstorerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA5B2164-1EEC-4E94-B19A-11537C7A3512}|src\\L.EventStore.Abstractions\\L.EventStore.Abstractions.csproj|d:\\repositories\\mock\\l.eventstore\\src\\l.eventstore.abstractions\\ieventstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA5B2164-1EEC-4E94-B19A-11537C7A3512}|src\\L.EventStore.Abstractions\\L.EventStore.Abstractions.csproj|solutionrelative:src\\l.eventstore.abstractions\\ieventstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ABF2DB-2A8A-4F24-8174-E091EA1E3027}|L.EventStore.UnitTests\\L.EventStore.UnitTests.csproj|d:\\repositories\\mock\\l.eventstore\\l.eventstore.unittests\\dependencyinjectiontests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ABF2DB-2A8A-4F24-8174-E091EA1E3027}|L.EventStore.UnitTests\\L.EventStore.UnitTests.csproj|solutionrelative:l.eventstore.unittests\\dependencyinjectiontests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "DockedHeight": 200,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EventTypeRepository.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore\\EventTypeRepository.cs",
+              "RelativeDocumentMoniker": "src\\L.EventStore\\EventTypeRepository.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore\\EventTypeRepository.cs",
+              "RelativeToolTip": "src\\L.EventStore\\EventTypeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T19:34:10.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IEventStoreRepository.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore.Abstractions\\IEventStoreRepository.cs",
+              "RelativeDocumentMoniker": "src\\L.EventStore.Abstractions\\IEventStoreRepository.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore.Abstractions\\IEventStoreRepository.cs",
+              "RelativeToolTip": "src\\L.EventStore.Abstractions\\IEventStoreRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T19:34:08.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GuidEventStoreFixture.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreFixture.cs",
+              "RelativeDocumentMoniker": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreFixture.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreFixture.cs",
+              "RelativeToolTip": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreFixture.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwCEAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T15:46:57.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": ".env",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\.env",
+              "RelativeDocumentMoniker": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\.env",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\.env",
+              "RelativeToolTip": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\.env",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-07-17T12:25:57.36Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,10 +118,83 @@
               "RelativeDocumentMoniker": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreRepositoryTests.cs",
               "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreRepositoryTests.cs",
               "RelativeToolTip": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreRepositoryTests.cs",
-              "ViewState": "AgIAAM8AAAAAAAAAAAAAAOgAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T09:19:00.873Z",
+              "WhenOpened": "2025-07-17T11:09:14.953Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ModelBuilderExtensions.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore.EntityFramework.PostgreSQL\\DataModel\\ModelBuilderExtensions.cs",
+              "RelativeDocumentMoniker": "src\\L.EventStore.EntityFramework.PostgreSQL\\DataModel\\ModelBuilderExtensions.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore.EntityFramework.PostgreSQL\\DataModel\\ModelBuilderExtensions.cs",
+              "RelativeToolTip": "src\\L.EventStore.EntityFramework.PostgreSQL\\DataModel\\ModelBuilderExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T21:14:16.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IEventStore.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore.Abstractions\\IEventStore.cs",
+              "RelativeDocumentMoniker": "src\\L.EventStore.Abstractions\\IEventStore.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore.Abstractions\\IEventStore.cs",
+              "RelativeToolTip": "src\\L.EventStore.Abstractions\\IEventStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T20:44:22.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DependencyInjectionTests.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\L.EventStore.UnitTests\\DependencyInjectionTests.cs",
+              "RelativeDocumentMoniker": "L.EventStore.UnitTests\\DependencyInjectionTests.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\L.EventStore.UnitTests\\DependencyInjectionTests.cs",
+              "RelativeToolTip": "L.EventStore.UnitTests\\DependencyInjectionTests.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAYwC8AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T11:28:08.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EventStore.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore\\EventStore.cs",
+              "RelativeDocumentMoniker": "src\\L.EventStore\\EventStore.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore\\EventStore.cs",
+              "RelativeToolTip": "src\\L.EventStore\\EventStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T12:39:36.978Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GuidEventStoreTests.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreTests.cs",
+              "RelativeDocumentMoniker": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreTests.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreTests.cs",
+              "RelativeToolTip": "tests\\L.EventStore.EntityFramework.PostgreSQL.FunctionalTests\\GuidEventStoreTests.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCgAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T12:48:04.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EventStoreRepository.cs",
+              "DocumentMoniker": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore.EntityFramework\\EventStoreRepository.cs",
+              "RelativeDocumentMoniker": "src\\L.EventStore.EntityFramework\\EventStoreRepository.cs",
+              "ToolTip": "D:\\Repositories\\Mock\\L.EventStore\\src\\L.EventStore.EntityFramework\\EventStoreRepository.cs",
+              "RelativeToolTip": "src\\L.EventStore.EntityFramework\\EventStoreRepository.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T20:52:00.628Z"
             }
           ]
         }

@@ -10,36 +10,36 @@ public sealed class EventStoreRepository<TStreamIdentifier, TContext>(TContext c
 {
     private readonly TContext _context = context ?? throw new ArgumentNullException(nameof(context));
 
-    public void Add(EventStoreEntry<TStreamIdentifier> @event)
+    public void Add(EventEntry<TStreamIdentifier> @event)
     {
-        _context.Set<EventStoreEntry<TStreamIdentifier>>()
+        _context.Set<EventEntry<TStreamIdentifier>>()
             .Add(@event);
     }
 
-    public async Task AddAsync(EventStoreEntry<TStreamIdentifier> @event)
+    public async Task AddAsync(EventEntry<TStreamIdentifier> @event)
     {
-        await _context.Set<EventStoreEntry<TStreamIdentifier>>()
+        await _context.Set<EventEntry<TStreamIdentifier>>()
             .AddAsync(@event);
     }
 
-    public async Task AddManyAsync(IEnumerable<EventStoreEntry<TStreamIdentifier>> events)
+    public async Task AddManyAsync(IEnumerable<EventEntry<TStreamIdentifier>> events)
     {
-        await _context.Set<EventStoreEntry<TStreamIdentifier>>()
+        await _context.Set<EventEntry<TStreamIdentifier>>()
             .AddRangeAsync(events);
     }
 
-    public async Task<List<EventStoreEntry<TStreamIdentifier>>> GetEventsAsync(TStreamIdentifier streamId)
+    public async Task<List<EventEntry<TStreamIdentifier>>> GetEventsAsync(TStreamIdentifier streamId)
     {
-        return await _context.Set<EventStoreEntry<TStreamIdentifier>>()
+        return await _context.Set<EventEntry<TStreamIdentifier>>()
             .AsNoTracking()
             .Where(e => e.StreamId.Equals(streamId))
             .OrderBy(e => e.Version)
             .ToListAsync();
     }
 
-    public async Task<List<EventStoreEntry<TStreamIdentifier>>> GetEventsAsync(TStreamIdentifier streamId, string streamType)
+    public async Task<List<EventEntry<TStreamIdentifier>>> GetEventsAsync(TStreamIdentifier streamId, string streamType)
     {
-        return await _context.Set<EventStoreEntry<TStreamIdentifier>>()
+        return await _context.Set<EventEntry<TStreamIdentifier>>()
             .AsNoTracking()
             .Where(e => e.StreamId.Equals(streamId) && e.StreamType == streamType)
             .OrderBy(e => e.Version)
@@ -48,7 +48,7 @@ public sealed class EventStoreRepository<TStreamIdentifier, TContext>(TContext c
 
     public async Task<long> GetStreamVersion(TStreamIdentifier streamId)
     {
-        return await _context.Set<EventStoreEntry<TStreamIdentifier>>()
+        return await _context.Set<EventEntry<TStreamIdentifier>>()
             .AsNoTracking()
             .Where(e => e.StreamId.Equals(streamId))
             .MaxAsync(e => (long?)e.Version) ?? 0;

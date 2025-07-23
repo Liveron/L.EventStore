@@ -1,4 +1,4 @@
-﻿namespace L.EventStore.Configuration.StreamId;
+﻿namespace L.EventStore.Abstractions.Configuration.StreamId;
 
 public static partial class StreamIdTypes
 {

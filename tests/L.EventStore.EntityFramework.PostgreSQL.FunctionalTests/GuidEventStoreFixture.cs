@@ -14,8 +14,9 @@ public sealed class GuidEventStoreFixture : IDisposable
     private const string _connectionStringEVN = "POSTGRESQL_DB";
 
     public TestDbContext DbContext { get; }
-    public IEventStoreRepository<Guid> Repository { get; }
-    public IEventStore<Guid, IEvent> EventStore { get; }
+    public IEventStoreRepository<Guid> EventStoreRepository { get; }
+    public IEventTypeRepository EventTypeRepository { get; }
+    public IEventStore<Guid> EventStore { get; }
 
     public GuidEventStoreFixture()
     {
@@ -35,8 +36,9 @@ public sealed class GuidEventStoreFixture : IDisposable
         DbContext = new TestDbContext(options);
         DbContext.Database.EnsureCreated();
 
-        Repository = new EventStoreRepository<Guid, TestDbContext>(DbContext);
-        EventStore = new EventStore<Guid, IEvent>(Repository);
+        EventStoreRepository = new EventStoreRepository<Guid, TestDbContext>(DbContext);
+        EventTypeRepository = new EventTypeRepository();
+        EventStore = new EventStore<Guid>(EventStoreRepository, EventTypeRepository);
     }
 
     public void Dispose()
@@ -45,8 +47,6 @@ public sealed class GuidEventStoreFixture : IDisposable
         EventStore.Dispose();
     }
 }
-
-public interface IEvent;
 
 public sealed class TestDbContext(DbContextOptions<TestDbContext> options)
     : DbContext(options)

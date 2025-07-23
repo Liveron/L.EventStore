@@ -1,5 +1,5 @@
 ﻿using L.EventStore.Abstractions;
-using L.EventStore.Configuration.StreamId;
+using L.EventStore.Abstractions.Configuration.StreamId;
 using L.EventStore.DependencyInjection.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,20 +8,27 @@ namespace L.EventStore.EntityFramework.DependencyInjection;
 
 public static class IDependencyInjectionEventBusConfiguratorExtensions
 {
-    public static void AddEntityFramework<TContext>(this IDependencyInjectionEventBusConfigurator configurator)
+    public static void AddEntityFramework<TContext>(
+        this IDependencyInjectionEventStoreConfigurator configurator)
         where TContext : DbContext
     {
-        ArgumentNullException.ThrowIfNull(configurator, nameof(configurator));
+        var services = configurator.Services;
+        var configuration = configurator.Configuration;
 
-        var streamIdType = configurator.Configuration.StreamIdType;
+        Type eventStoreRepositoryInterfaceType;
+        Type eventStoreRepositoryType;
 
-        switch (streamIdType)
+        var streamIdType = configuration.StreamIdType;
+        switch (configuration.StreamIdType)
         {
-            case Type t when t == typeof(StreamIdTypes.Guid):
-                configurator.Services.AddScoped(typeof(IEventStoreRepository<Guid>), typeof(EventStoreRepository<Guid, TContext>));
+            case StreamIdTypes.Guid:
+                eventStoreRepositoryInterfaceType = typeof(IEventStoreRepository<Guid>);
+                eventStoreRepositoryType = typeof(EventStoreRepository<Guid, TContext>);
                 break;
             default:
-                throw new NotSupportedException($"StreamId type '{streamIdType.FullName}' is not supported by Entity Framework Event Store.");
+                throw new NotSupportedException($"StreamId type '{streamIdType}' is not supported.");
         }
+
+        services.AddScoped(eventStoreRepositoryInterfaceType, eventStoreRepositoryType);
     }
 }
