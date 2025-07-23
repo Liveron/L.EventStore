@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L.EventStore.Projector.Abst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L.EventStore.Projector.EntityFramework.PostgreSQL", "src\L.EventStore.Projector.EntityFramework.PostgreSQL\L.EventStore.Projector.EntityFramework.PostgreSQL.csproj", "{560CE6DE-7404-41FB-94C1-D381C0A31E09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L.EventStore.UnitTests", "L.EventStore.UnitTests\L.EventStore.UnitTests.csproj", "{D4ABF2DB-2A8A-4F24-8174-E091EA1E3027}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L.EventStore.UnitTests", "tests\L.EventStore.UnitTests\L.EventStore.UnitTests.csproj", "{D4ABF2DB-2A8A-4F24-8174-E091EA1E3027}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
